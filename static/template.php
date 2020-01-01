@@ -17,34 +17,29 @@
 <body>
 <div class="pathinfo">
     <?php if($data){ ?>
-	<?php foreach ($data as $key => $resp) {
-	if (!is_array($resp)) { ?>
+	<?php foreach ($data as $key => $resp) {?>
 	<div class="p info-item-<?=$key?>">
-		<div class="title"><?=$key?>:</div>
-		<div class="content"><?php echo $resp;?></div>
-		<div style="clear:both"></div>
-	</div>
-	<? }else{ ?>
-	<div class="p info-item-<?=$key?>">
-		<div class="title"><?=$key?>:</div>
+		<div class="title"><?php $lowerstr = strtolower($key);echo (LNG("imageExif.exif.{$lowerstr}")!="imageExif.exif.{$lowerstr}"&&!empty(LNG("imageExif.exif.{$lowerstr}"))?LNG("imageExif.exif.{$lowerstr}"):$key); ?>:</div>
 		<div class="content">
-			<?php
-				echo "<ol>";
+            <?php if (!is_array($resp)) {
+                echo $resp;
+            }else{
+                echo "<ol>";
 				foreach ($resp as $vkey => $value) {
 					echo "<li>".$vkey. " <small>(" .$value.")</small></li>";
 				}
 				echo "</ol>";
-			?>
+            } ?>
 		</div>
 		<div style="clear:both"></div>
-	</div><div class="line"></div>
-	<?php } } ?>
-	<?php  }else{ ?>
+	</div>
+    <?php if (is_array($resp)) {echo '<div class="line"></div>';}
+    }}else{ ?>
 	<div class="p info-item">
-		<div style="text-align:center;">无exif信息</div>
+		<div style="text-align:center;"><?php echo LNG('imageExif.exif.none'); ?></div>
 		<div style="clear:both"></div>
 	</div>
-		<script type="text/javascript">parent.Tips.close('无exif信息','warning');</script>
+		<script type="text/javascript">parent.Tips.close('<?php echo LNG('imageExif.exif.none'); ?>','warning');</script>
 	<?php  } ?>
 </div>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>

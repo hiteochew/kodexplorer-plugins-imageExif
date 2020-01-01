@@ -2,7 +2,7 @@
 	"id":"imageExif",
 	"name":"{{LNG.imageExif.meta.name}}",
 	"title":"{{LNG.imageExif.meta.title}}",
-	"version":"1.2.1",
+	"version":"1.2.2",
 	"category":"media",
 	"source":{
 		"className":"font-icon icon-info bg-blue-7"
